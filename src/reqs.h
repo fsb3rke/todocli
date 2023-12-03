@@ -9,4 +9,6 @@
 #include "fs.h"
 #include "../lib/json.hpp"
 
+using json = nlohmann::json;
+
 #endif // REQS_H_

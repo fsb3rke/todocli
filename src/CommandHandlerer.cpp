@@ -22,3 +22,10 @@ command CommandHandlerer::convert(std::string command) {
 
     return command::NONE;
 }
+
+void CommandHandlerer::init() {
+    std::ifstream f(INIT_FILE);
+    this->data = json::parse(f);
+
+    std::cout << data.dump(4) << std::endl;
+}

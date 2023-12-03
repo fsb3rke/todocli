@@ -1,20 +1,14 @@
-#include <iostream>
-#include <fstream>
-#include "../lib/json.hpp"
-#include "fs.h"
+#include "CommandHandlerer.h"
 
-using json = nlohmann::json;
-
-void checkInitFile();
 
 int main(int argc, char const *argv[])
 {
-	std::ifstream f(argv[1]);
-	json data = json::parse(f);
-	std::cout << data.dump(4) << std::endl;
+	CommandHandlerer com;
+	std::string command = argv[1];
+
+	if (command != "init") com.init();
+
+	com.execute(com.convert(command));
+
 	return 0;
-}
-
-void checkInitFile() {
-
 }

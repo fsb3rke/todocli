@@ -13,8 +13,10 @@ enum command {
 class CommandHandlerer {
 private:
     void commandInitialize();
+    json data;
 public:
     command convert(std::string command);
+    void init();
     void execute(command comm);
 };
 
