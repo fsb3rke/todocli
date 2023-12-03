@@ -11,6 +11,7 @@
 
 namespace fs {
     void createInitFile();
+    bool exist();
 }
 
-#endif
+#endif // FS_H_
