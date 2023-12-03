@@ -1,1 +1,1 @@
-g++ -Wall -Werror -Wpedantic src/main.cpp src/fs.cpp -o build/main.exe
+g++ -Wall -Werror -Wpedantic src/main.cpp src/fs.cpp src/CommandHandlerer.cpp -o build/main.exe
