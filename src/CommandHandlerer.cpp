@@ -14,6 +14,14 @@ void CommandHandlerer::addTask(std::string task) {
     std::cout << this->data.dump(4) << std::endl;
 }
 
+void CommandHandlerer::listTasks() {
+    json uData = this->data["app"]["tasks"];
+    for (size_t i = 0; i < uData.size(); ++i) {
+        json i_uData = uData[i];
+        std::cout << i << " " << (i_uData["completed"] ? "\x1B[31m" : "\x1B[32m") << " " << i_uData["task"] << "\033[0m" << std::endl;
+    }
+}
+
 void CommandHandlerer::execute(command comm) {
     switch (comm)
     {
@@ -24,6 +32,10 @@ void CommandHandlerer::execute(command comm) {
     case ADD:
         this->addTask(this->argv.at(2));
         break;
+
+    case LIST:
+        this->listTasks();
+        break;
     
     default:
         break;
@@ -33,6 +45,7 @@ void CommandHandlerer::execute(command comm) {
 command CommandHandlerer::convert(std::string command) {
     if (command == "init") return command::INIT;
     else if (command == "add") return command::ADD;
+    else if (command == "list") return command::LIST;
 
     return command::NONE;
 }

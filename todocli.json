@@ -1,1 +1,14 @@
-{"app":{"tasks":[]}}
+{
+    "app": {
+        "tasks": [
+            {
+                "task": "do some programs",
+                "completed": false
+            },
+            {
+                "task": "hello, world!",
+                "completed": true
+            }
+        ]
+    }
+}

@@ -8,6 +8,7 @@
 enum command {
     INIT,
     ADD,
+    LIST,
     NONE
 };
 
@@ -15,6 +16,7 @@ class CommandHandlerer {
 private:
     void commandInitialize();
     void addTask(std::string task);
+    void listTasks();
     json data;
     std::vector<std::string> argv;
 public:
