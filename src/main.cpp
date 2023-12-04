@@ -1,10 +1,10 @@
 #include "CommandHandlerer.h"
+#include "cc.h"
 
-std::vector<std::string> chrToVec(char const *chrArr[], int argc);
 
 int main(int argc, char const *argv[])
 {
-	std::vector<std::string> vecArgv = chrToVec(argv, argc);
+	std::vector<std::string> vecArgv = cc::chrToVec(argv, argc);
 	CommandHandlerer com(vecArgv);
 	std::string command = vecArgv.at(1);
 
@@ -13,14 +13,4 @@ int main(int argc, char const *argv[])
 	com.execute(com.convert(command));
 
 	return 0;
-}
-
-std::vector<std::string> chrToVec(char const *chrArr[], int argc) {
-	std::vector<std::string> stackVec;
-
-	for (int i = 0; i < argc; ++i) {
-		stackVec.push_back(chrArr[i]);
-	}
-
-	return stackVec;
 }

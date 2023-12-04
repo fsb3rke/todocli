@@ -12,6 +12,10 @@
             {
                 "completed": false,
                 "task": "berke"
+            },
+            {
+                "completed": false,
+                "task": "berke"
             }
         ]
     }
