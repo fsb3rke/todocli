@@ -11,6 +11,7 @@
 
 namespace fs {
     void createInitFile();
+    void writeOnInitFile(std::string dumpedContent);
     bool exist();
 }
 

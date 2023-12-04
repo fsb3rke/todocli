@@ -11,6 +11,7 @@ void CommandHandlerer::addTask(std::string task) {
             {"completed", false}
         });
 
+    fs::writeOnInitFile(this->data.dump(4));
     std::cout << this->data.dump(4) << std::endl;
 }
 

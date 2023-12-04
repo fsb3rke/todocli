@@ -2,12 +2,16 @@
     "app": {
         "tasks": [
             {
-                "task": "do some programs",
-                "completed": false
+                "completed": false,
+                "task": "do some programs"
             },
             {
-                "task": "hello, world!",
-                "completed": true
+                "completed": true,
+                "task": "hello, world!"
+            },
+            {
+                "completed": false,
+                "task": "berke"
             }
         ]
     }
