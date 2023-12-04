@@ -9,6 +9,7 @@ enum command {
     INIT,
     ADD,
     LIST,
+    GET,
     NONE
 };
 
@@ -17,6 +18,7 @@ private:
     void commandInitialize();
     void addTask(std::string task);
     void listTasks();
+    void getTask(int id);
     json data;
     std::vector<std::string> argv;
 public:

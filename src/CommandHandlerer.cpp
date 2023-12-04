@@ -23,6 +23,11 @@ void CommandHandlerer::listTasks() {
     }
 }
 
+void CommandHandlerer::getTask(int id) {
+    json _data = this->data["app"]["tasks"][id];
+    std::cout << id << " " << (_data["completed"] ? "\x1B[31m" : "\x1B[32m") << " " << _data["task"] << "\033[0m" << std::endl;
+}
+
 void CommandHandlerer::execute(command comm) {
     switch (comm)
     {
@@ -37,6 +42,10 @@ void CommandHandlerer::execute(command comm) {
     case LIST:
         this->listTasks();
         break;
+
+    case GET:
+        this->getTask(std::stoi(this->argv.at(2)));
+        break;
     
     default:
         break;
@@ -47,6 +56,7 @@ command CommandHandlerer::convert(std::string command) {
     if (command == "init") return command::INIT;
     else if (command == "add") return command::ADD;
     else if (command == "list") return command::LIST;
+    else if (command == "get") return command::GET;
 
     return command::NONE;
 }
