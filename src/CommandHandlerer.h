@@ -7,14 +7,20 @@
 
 enum command {
     INIT,
+    ADD,
     NONE
 };
 
 class CommandHandlerer {
 private:
     void commandInitialize();
+    void addTask(std::string task);
     json data;
+    std::vector<std::string> argv;
 public:
+    CommandHandlerer(std::vector<std::string> argv) {
+        this->argv = std::move(argv);
+    }
     command convert(std::string command);
     void init();
     void execute(command comm);
