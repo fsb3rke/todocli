@@ -6,7 +6,7 @@
                 "task": "do some programs"
             },
             {
-                "completed": true,
+                "completed": false,
                 "task": "hello, world!"
             }
         ]

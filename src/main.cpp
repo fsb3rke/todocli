@@ -10,7 +10,7 @@ int main(int argc, char const *argv[])
 
 	if (command != "init") com.init();
 
-	com.execute(com.convert(command));
+	com.execute(com.convertCommand(command));
 
 	return 0;
 }

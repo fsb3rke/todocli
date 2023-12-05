@@ -11,7 +11,16 @@ enum command {
     LIST,
     GET,
     REMOVE,
+    STATUS,
     NONE
+};
+
+
+#define PARAM_COMPLETE "--c"
+#define PARAM_UNCOMPLETE "--u"
+enum status {
+    COMPLETED,
+    UNCOMPLETED
 };
 
 class CommandHandlerer {
@@ -21,13 +30,15 @@ private:
     void listTasks();
     void getTask(int id);
     void removeTask(int id);
+    void setTaskStatus(int id, status stat);
     json data;
     std::vector<std::string> argv;
 public:
     CommandHandlerer(std::vector<std::string> argv) {
         this->argv = std::move(argv);
     }
-    command convert(std::string command);
+    command convertCommand(std::string command);
+    status convertStatus(std::string param);
     void init();
     void execute(command comm);
 };

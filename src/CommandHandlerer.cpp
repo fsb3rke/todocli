@@ -33,6 +33,11 @@ void CommandHandlerer::removeTask(int id) {
     fs::writeOnInitFile(this->data.dump(4));
 }
 
+void CommandHandlerer::setTaskStatus(int id, status stat) {
+    this->data["app"]["tasks"][id]["completed"] = stat == status::COMPLETED ? true : false;
+    fs::writeOnInitFile(this->data.dump(4));
+}
+
 void CommandHandlerer::execute(command comm) {
     switch (comm)
     {
@@ -40,20 +45,30 @@ void CommandHandlerer::execute(command comm) {
         this->commandInitialize();
         break;
 
+    // usage: todocli add TASK
     case ADD:
-        this->addTask(this->argv.at(2));
+        this->addTask(this->argv.at(2)); // TODO: collect all args from at second index to last index.
         break;
 
+    // usage: todocli list
     case LIST:
         this->listTasks();
         break;
 
+    // usage: todocli get INDEX
     case GET:
         this->getTask(std::stoi(this->argv.at(2)));
         break;
 
+    // usage: todocli remove INDEX
     case REMOVE:
         this->removeTask(std::stoi(this->argv.at(2)));
+        break;
+    
+    // usage: todocli status --c / --u INDEX
+    case STATUS:
+        std::cout << this->argv.at(2) << " " << this->argv.at(3) << std::endl;
+        this->setTaskStatus(std::stoi(this->argv.at(3)), this->convertStatus(this->argv.at(2)));
         break;
     
     default:
@@ -61,14 +76,22 @@ void CommandHandlerer::execute(command comm) {
     }
 }
 
-command CommandHandlerer::convert(std::string command) {
+command CommandHandlerer::convertCommand(std::string command) {
     if (command == "init") return command::INIT;
     else if (command == "add") return command::ADD;
     else if (command == "list") return command::LIST;
     else if (command == "get") return command::GET;
     else if (command == "remove") return command::REMOVE;
+    else if (command == "status") return command::STATUS;
 
     return command::NONE;
+}
+
+status CommandHandlerer::convertStatus(std::string param) {
+    if (param == PARAM_COMPLETE) return status::COMPLETED;
+    else if (param == PARAM_UNCOMPLETE) return status::UNCOMPLETED;
+
+    return status::UNCOMPLETED;
 }
 
 void CommandHandlerer::init() {
