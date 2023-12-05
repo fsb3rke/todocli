@@ -70,8 +70,24 @@ void CommandHandlerer::execute(command comm) {
         std::cout << this->argv.at(2) << " " << this->argv.at(3) << std::endl;
         this->setTaskStatus(std::stoi(this->argv.at(3)), this->convertStatus(this->argv.at(2)));
         break;
-    
+
     default:
+        // HELP
+        std::cout
+            << "\tCOMMAND\t\t\t-\tDESCRIPTION"
+            << "\n"
+            << "\tinit\t\t\t:\tcreates a todocli init file."
+            << "\n"
+            << "\tlist\t\t\t:\tlists all tasks."
+            << "\n"
+            << "\tget INDEX\t\t:\tget spesific task with index."
+            << "\n"
+            << "\tadd TASK\t\t:\tadd task."
+            << "\n"
+            << "\tremove INDEX\t\t:\tremove spesific task with index."
+            << "\n"
+            << "\tstatus STATUS INDEX\t:\tchange spesific task status with status parameter and index."
+            << std::endl;
         break;
     }
 }
