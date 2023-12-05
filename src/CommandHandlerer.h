@@ -4,6 +4,7 @@
 #define COMMAND_HANDLERER_H
 
 #include "reqs.h"
+#include <functional>
 
 enum command {
     INIT,
@@ -31,6 +32,9 @@ private:
     void getTask(int id);
     void removeTask(int id);
     void setTaskStatus(int id, status stat);
+    std::function<void()> writeToInitFile = [this]() {
+        fs::writeOnInitFile(this->data.dump(4));
+    };
     json data;
     std::vector<std::string> argv;
 public:

@@ -11,7 +11,7 @@ void CommandHandlerer::addTask(std::string task) {
             {"completed", false}
         });
 
-    fs::writeOnInitFile(this->data.dump(4));
+    writeToInitFile();
     std::cout << this->data.dump(4) << std::endl;
 }
 
@@ -30,12 +30,12 @@ void CommandHandlerer::getTask(int id) {
 
 void CommandHandlerer::removeTask(int id) {
     this->data["app"]["tasks"].erase(id);
-    fs::writeOnInitFile(this->data.dump(4));
+    writeToInitFile();
 }
 
 void CommandHandlerer::setTaskStatus(int id, status stat) {
     this->data["app"]["tasks"][id]["completed"] = stat == status::COMPLETED ? true : false;
-    fs::writeOnInitFile(this->data.dump(4));
+    writeToInitFile();
 }
 
 void CommandHandlerer::execute(command comm) {
