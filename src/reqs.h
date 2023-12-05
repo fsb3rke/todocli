@@ -8,6 +8,7 @@
 #include <iostream>
 #include "fs.h"
 #include "../lib/json.hpp"
+#include "cc.h"
 
 using json = nlohmann::json;
 

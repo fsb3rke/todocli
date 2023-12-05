@@ -47,7 +47,7 @@ void CommandHandlerer::execute(command comm) {
 
     // usage: todocli add TASK
     case ADD:
-        this->addTask(this->argv.at(2)); // TODO: collect all args from at second index to last index.
+        this->addTask(cc::collectVecInStr(this->argv, 2));
         break;
 
     // usage: todocli list

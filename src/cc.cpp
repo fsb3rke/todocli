@@ -10,3 +10,13 @@ std::vector<std::string> cc::chrToVec(char const *chrArr[], int argc) {
 
 	return stackVec;
 }
+
+std::string cc::collectVecInStr(std::vector<std::string> vec, size_t startIdx) {
+	std::string stackStr;
+
+	for (size_t i = startIdx; i < vec.size(); ++i) {
+		stackStr += vec.at(i) + " ";
+	}
+
+	return stackStr;
+}
