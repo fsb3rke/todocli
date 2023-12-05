@@ -18,5 +18,6 @@ std::string cc::collectVecInStr(std::vector<std::string> vec, size_t startIdx) {
 		stackStr += vec.at(i) + " ";
 	}
 
+	stackStr.pop_back();
 	return stackStr;
 }
