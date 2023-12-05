@@ -11,8 +11,9 @@ void CommandHandlerer::addTask(std::string task) {
             {"completed", false}
         });
 
+    std::cout << "\"" << task << "\"" << " is " << "\x1B[32m" << "added" << "\033[0m" << "." << std::endl;
     writeToInitFile();
-    std::cout << this->data.dump(4) << std::endl;
+    // std::cout << this->data.dump(4) << std::endl;
 }
 
 void CommandHandlerer::listTasks() {
@@ -29,12 +30,33 @@ void CommandHandlerer::getTask(int id) {
 }
 
 void CommandHandlerer::removeTask(int id) {
-    this->data["app"]["tasks"].erase(id);
+    json tasks = this->data["app"]["tasks"];
+    try
+    {
+        this->data["app"]["tasks"].erase(id);
+    }
+    catch(const std::exception& e)
+    {
+        ERR_IDX_ABT(tasks, (size_t)id, "Array Out of Index.")
+    }
+    
+    std::cout << id << " is " << "\x1B[32m" << "removed" << "\033[0m" << "." << std::endl;
     writeToInitFile();
 }
 
 void CommandHandlerer::setTaskStatus(int id, status stat) {
+    json tasks = this->data["app"]["tasks"];
+    try
+    {
+        this->data["app"]["tasks"].erase(id);
+    }
+    catch(const std::exception& e)
+    {
+        ERR_IDX_ABT(tasks, (size_t)id, "Array Out of Index.")
+    }
+
     this->data["app"]["tasks"][id]["completed"] = stat == status::COMPLETED ? true : false;
+    std::cout << id << " setted" << (stat == status::COMPLETED ? "\x1B[31m completed" : "\x1B[32m uncompleted") << "\033[0m" << std::endl;
     writeToInitFile();
 }
 
@@ -67,7 +89,7 @@ void CommandHandlerer::execute(command comm) {
     
     // usage: todocli status --c / --u INDEX
     case STATUS:
-        std::cout << this->argv.at(2) << " " << this->argv.at(3) << std::endl;
+        // std::cout << this->argv.at(2) << " " << this->argv.at(3) << std::endl;
         this->setTaskStatus(std::stoi(this->argv.at(3)), this->convertStatus(this->argv.at(2)));
         break;
 
@@ -114,5 +136,5 @@ void CommandHandlerer::init() {
     std::ifstream f(INIT_FILE);
     this->data = json::parse(f);
 
-    std::cout << data["app"]["tasks"].dump(4) << std::endl;
+    // std::cout << data["app"]["tasks"].dump(4) << std::endl;
 }

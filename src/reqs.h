@@ -9,6 +9,7 @@
 #include "fs.h"
 #include "../lib/json.hpp"
 #include "cc.h"
+#include "error.h"
 
 using json = nlohmann::json;
 

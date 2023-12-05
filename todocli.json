@@ -82,12 +82,7 @@
                 "task": "berke "
             },
             {
-                "completed": false,
-                "task": "berke haha "
-            },
-            {
-                "completed": false,
-                "task": "berke haha"
+                "completed": false
             }
         ]
     }
