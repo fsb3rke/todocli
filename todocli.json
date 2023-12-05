@@ -8,14 +8,6 @@
             {
                 "completed": true,
                 "task": "hello, world!"
-            },
-            {
-                "completed": false,
-                "task": "berke"
-            },
-            {
-                "completed": false,
-                "task": "berke"
             }
         ]
     }

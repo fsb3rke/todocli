@@ -10,6 +10,7 @@ enum command {
     ADD,
     LIST,
     GET,
+    REMOVE,
     NONE
 };
 
@@ -19,6 +20,7 @@ private:
     void addTask(std::string task);
     void listTasks();
     void getTask(int id);
+    void removeTask(int id);
     json data;
     std::vector<std::string> argv;
 public:

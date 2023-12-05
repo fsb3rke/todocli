@@ -28,6 +28,11 @@ void CommandHandlerer::getTask(int id) {
     std::cout << id << " " << (_data["completed"] ? "\x1B[31m" : "\x1B[32m") << " " << _data["task"] << "\033[0m" << std::endl;
 }
 
+void CommandHandlerer::removeTask(int id) {
+    this->data["app"]["tasks"].erase(id);
+    fs::writeOnInitFile(this->data.dump(4));
+}
+
 void CommandHandlerer::execute(command comm) {
     switch (comm)
     {
@@ -46,6 +51,10 @@ void CommandHandlerer::execute(command comm) {
     case GET:
         this->getTask(std::stoi(this->argv.at(2)));
         break;
+
+    case REMOVE:
+        this->removeTask(std::stoi(this->argv.at(2)));
+        break;
     
     default:
         break;
@@ -57,6 +66,7 @@ command CommandHandlerer::convert(std::string command) {
     else if (command == "add") return command::ADD;
     else if (command == "list") return command::LIST;
     else if (command == "get") return command::GET;
+    else if (command == "remove") return command::REMOVE;
 
     return command::NONE;
 }
