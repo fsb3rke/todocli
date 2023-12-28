@@ -48,15 +48,15 @@ void CommandHandlerer::setTaskStatus(int id, status stat) {
     json tasks = this->data["app"]["tasks"];
     try
     {
-        this->data["app"]["tasks"]["id"];
+        this->data["app"]["tasks"][id];
     }
     catch(const std::exception& e)
     {
         ERR_IDX_ABT(tasks, (size_t)id, "Array Out of Index.")
     }
 
-    this->data["app"]["tasks"][id]["completed"] = stat == status::COMPLETED ? true : false;
-    std::cout << id << " setted" << (stat == status::COMPLETED ? "\x1B[31m completed" : "\x1B[32m uncompleted") << "\033[0m" << std::endl;
+    this->data["app"]["tasks"][id]["completed"] = stat == status::COMPLETED;
+    std::cout << id << " set" << (stat == status::COMPLETED ? "\x1B[31m completed" : "\x1B[32m uncompleted") << "\033[0m" << std::endl;
     writeToInitFile();
 }
 
