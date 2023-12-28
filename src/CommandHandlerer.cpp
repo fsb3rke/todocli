@@ -48,7 +48,7 @@ void CommandHandlerer::setTaskStatus(int id, status stat) {
     json tasks = this->data["app"]["tasks"];
     try
     {
-        this->data["app"]["tasks"].erase(id);
+        this->data["app"]["tasks"]["id"];
     }
     catch(const std::exception& e)
     {
@@ -60,8 +60,8 @@ void CommandHandlerer::setTaskStatus(int id, status stat) {
     writeToInitFile();
 }
 
-void CommandHandlerer::execute(command comm) {
-    switch (comm)
+void CommandHandlerer::execute(std::string comm) {
+    switch (this->commandMap[comm])
     {
     case INIT:
         this->commandInitialize();
@@ -90,7 +90,7 @@ void CommandHandlerer::execute(command comm) {
     // usage: todocli status --c / --u INDEX
     case STATUS:
         // std::cout << this->argv.at(2) << " " << this->argv.at(3) << std::endl;
-        this->setTaskStatus(std::stoi(this->argv.at(3)), this->convertStatus(this->argv.at(2)));
+        this->setTaskStatus(std::stoi(this->argv.at(3)), this->statusMap[this->argv.at(2)]);
         break;
 
     default:
@@ -114,23 +114,6 @@ void CommandHandlerer::execute(command comm) {
     }
 }
 
-command CommandHandlerer::convertCommand(std::string command) {
-    if (command == "init") return command::INIT;
-    else if (command == "add") return command::ADD;
-    else if (command == "list") return command::LIST;
-    else if (command == "get") return command::GET;
-    else if (command == "remove") return command::REMOVE;
-    else if (command == "status") return command::STATUS;
-
-    return command::NONE;
-}
-
-status CommandHandlerer::convertStatus(std::string param) {
-    if (param == PARAM_COMPLETE) return status::COMPLETED;
-    else if (param == PARAM_UNCOMPLETE) return status::UNCOMPLETED;
-
-    return status::UNCOMPLETED;
-}
 
 void CommandHandlerer::init() {
     std::ifstream f(INIT_FILE);

@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
 
 	if (command != "init") com.init();
 
-	com.execute(com.convertCommand(command));
+	com.execute(command);
 
 	return 0;
 }
