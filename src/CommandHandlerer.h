@@ -6,6 +6,7 @@
 #include "reqs.h"
 #include <functional>
 #include <unordered_map>
+#include <ctime>
 
 
 enum command {
@@ -18,17 +19,12 @@ enum command {
     NONE
 };
 
-
-
-
 #define PARAM_COMPLETE "--c"
 #define PARAM_UNCOMPLETE "--u"
 enum status {
     COMPLETED,
     UNCOMPLETED
 };
-
-
 
 class CommandHandlerer {
 private:
