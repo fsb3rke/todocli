@@ -7,6 +7,7 @@
 #include <functional>
 #include <unordered_map>
 #include <ctime>
+#include "../lib/tabulate.hpp"
 
 
 enum command {
@@ -16,6 +17,7 @@ enum command {
     GET,
     REMOVE,
     STATUS,
+    HELP,
     NONE
 };
 
@@ -46,12 +48,14 @@ private:
         {"get", command::GET},
         {"remove", command::REMOVE},
         {"status", command::STATUS},
+        {"help", command::HELP},
         {"none", command::NONE}
     };
     std::unordered_map<std::string, status> statusMap {
-        {"completed", status::COMPLETED},
-        {"uncompleted", status::UNCOMPLETED}
+        {PARAM_COMPLETE, status::COMPLETED},
+        {PARAM_UNCOMPLETE, status::UNCOMPLETED}
     };
+    tabulate::Table cliView;
 public:
     CommandHandlerer(std::vector<std::string> argv) {
         this->argv = std::move(argv);
