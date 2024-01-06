@@ -1,5 +1,3 @@
-#pragma once
-
 #ifndef COMMAND_HANDLERER_H
 #define COMMAND_HANDLERER_H
 
@@ -7,7 +5,7 @@
 #include <functional>
 #include <unordered_map>
 #include <ctime>
-#include "../lib/tabulate.hpp"
+#include <tabulate.hpp>
 
 
 enum command {
@@ -31,11 +29,11 @@ enum status {
 class CommandHandlerer {
 private:
     void commandInitialize();
-    void addTask(std::string task);
+    void addTask(const std::string& task);
     void listTasks();
-    void getTask(int id);
-    void removeTask(int id);
-    void setTaskStatus(int id, status stat);
+    void getTask(const int& id);
+    void removeTask(const int& id);
+    void setTaskStatus(const int& id, const status& stat);
     std::function<void()> writeToInitFile = [this]() {
         fs::writeOnInitFile(this->data.dump(4));
     };
@@ -65,11 +63,11 @@ private:
     };
     tabulate::Table cliView;
 public:
-    CommandHandlerer(std::vector<std::string> argv) {
-        this->argv = std::move(argv);
+    CommandHandlerer(const std::vector<std::string>& argv) {
+        this->argv = argv;
     }
     void init();
-    void execute(std::string comm);
+    void execute(const std::string& comm);
 };
 
 #endif // COMMAND_HANDLERER_H

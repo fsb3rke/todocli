@@ -5,7 +5,7 @@ void CommandHandlerer::commandInitialize() {
     if (!fs::exist()) fs::createInitFile();
 }
 
-void CommandHandlerer::addTask(std::string task) {
+void CommandHandlerer::addTask(const std::string& task) {
     time_t now = time(0);
     char* dt = ctime(&now);
 
@@ -58,7 +58,7 @@ void CommandHandlerer::listTasks() {
     std::cout << this->cliView << std::endl;
 }
 
-void CommandHandlerer::getTask(int id) {
+void CommandHandlerer::getTask(const int& id) {
     json _data = this->data["app"]["tasks"][id];
 
     this->cliView.add_row({"ID", "TASK", "DATE"});
@@ -77,7 +77,7 @@ void CommandHandlerer::getTask(int id) {
     // std::cout << id << " " << (_data["completed"] ? "\x1B[31m" : "\x1B[32m") << " " << _data["task"] << " \x1B[33m" << _data["date"] << "\033[0m" << std::endl;
 }
 
-void CommandHandlerer::removeTask(int id) {
+void CommandHandlerer::removeTask(const int& id) {
     json tasks = this->data["app"]["tasks"];
 
     this->cliView.add_row({"ID", "TASK", "DATE"});
@@ -108,7 +108,7 @@ void CommandHandlerer::removeTask(int id) {
     writeToInitFile();
 }
 
-void CommandHandlerer::setTaskStatus(int id, status stat) {
+void CommandHandlerer::setTaskStatus(const int& id, const status& stat) {
     json tasks = this->data["app"]["tasks"];
     try
     {
@@ -138,7 +138,7 @@ void CommandHandlerer::setTaskStatus(int id, status stat) {
     writeToInitFile();
 }
 
-void CommandHandlerer::execute(std::string comm) {
+void CommandHandlerer::execute(const std::string& comm) {
     switch (this->commandMap[comm])
     {
     case INIT:

@@ -1,7 +1,7 @@
 #include "cc.h"
 
 
-std::vector<std::string> cc::chrToVec(char const *chrArr[], int argc) {
+std::vector<std::string> cc::chrToVec(char const *chrArr[], const int& argc) {
 	std::vector<std::string> stackVec;
 
 	for (int i = 0; i < argc; ++i) {
@@ -11,7 +11,7 @@ std::vector<std::string> cc::chrToVec(char const *chrArr[], int argc) {
 	return stackVec;
 }
 
-std::string cc::collectVecInStr(std::vector<std::string> vec, size_t startIdx) {
+std::string cc::collectVecInStr(const std::vector<std::string>& vec, const size_t& startIdx) {
 	std::string stackStr;
 
 	for (size_t i = startIdx; i < vec.size(); ++i) {
