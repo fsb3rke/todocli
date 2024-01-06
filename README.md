@@ -8,6 +8,12 @@ todocli
 ```
 
 ## Commands & Usages
+
+## Command List
+| Initialize | Add Task | Remove Task | List Tasks | Set Status Task |
+| ---------- | -------- | ----------- | ---------- | --------------- |
+| todocli init | todocli add TASK | todocli remove INDEX | todocli list | todocli status FLAG INDEX |
+
 ### Create Init file
 ```sh
 todocli init
@@ -37,6 +43,8 @@ todocli status flag 0
 todocli remove 0
 ```
 
+
+
  ## Installation
 Github to clone the project.
 ```sh
@@ -47,10 +55,25 @@ Cli to clone the project.
 gh repo clone fsb3rke/todocli
 ```
 
-## Command List
-| Initialize | Add Task | Remove Task | List Tasks | Set Status Task |
-| ---------- | -------- | ----------- | ---------- | --------------- |
-| todocli init | todocli add TASK | todocli remove INDEX | todocli list | todocli status FLAG INDEX |
+#### WINDOWS
+POWERSHELL
+```
+./build.bat
+```
+CMD
+```
+build.bat
+```
+
+#### LINUX
+First, bash file needs to ``chmod 777`` to be an executable file.
+```sh
+chmod 777 ./build.sh
+```
+You can execute the bash file.
+```sh
+./build.sh
+```
 
 ## RoadMap
 - Header System
