@@ -110,4 +110,4 @@ You can execute the bash file.
 ## License
 Copyright (c) 2023 Berke Avcı (fsb3rke) \
 \
-This software is released under the [MIT](https://github.com/fsb3rke/todocli/blob/JohnSquirrel-suggestions/LICENSE) License.
+This software is released under the [MIT](https://github.com/fsb3rke/todocli/blob/master/LICENSE) License.
