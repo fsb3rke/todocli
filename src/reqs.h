@@ -1,5 +1,3 @@
-#pragma once
-
 #ifndef REQS_H_
 #define REQS_H_
 
@@ -7,7 +5,7 @@
 #include <string>
 #include <iostream>
 #include "fs.h"
-#include "../lib/json.hpp"
+#include <json.hpp>
 #include "cc.h"
 #include "error.h"
 

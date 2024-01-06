@@ -1,5 +1,3 @@
-#pragma once
-
 #ifndef FS_H_
 #define FS_H_
 
@@ -11,7 +9,7 @@
 
 namespace fs {
     void createInitFile();
-    void writeOnInitFile(std::string dumpedContent);
+    void writeOnInitFile(const std::string& dumpedContent);
     bool exist();
 }
 

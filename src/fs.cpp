@@ -11,7 +11,7 @@ bool fs::exist() {
     return f.good(); // No memory leak. Because ifstream will called to be destroy at exit.
 }
 
-void fs::writeOnInitFile(std::string dumpedContent) {
+void fs::writeOnInitFile(const std::string& dumpedContent) {
     std::ofstream f(INIT_FILE);
     f << dumpedContent;
     f.close();
