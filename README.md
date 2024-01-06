@@ -23,11 +23,23 @@ todocli init
 ```sh
 todocli add fsb3rke is a good developer
 ```
+<details>
+<summary>Show The Example</summary>
+<p align="center">
+  <img src="https://github.com/fsb3rke/todocli/blob/master/images/addTask.png?raw=true" width="580" title="addTask example">
+</p>
+</details>
 
 ### List All Tasks
 ```sh
 todocli list
 ```
+<details>
+<summary>Show The Example</summary>
+<p align="center">
+  <img src="https://github.com/fsb3rke/todocli/blob/master/images/listTasks.png?raw=true" width="580" title="listTasks example">
+</p>
+</details>
 
 ### Change Spesific Task Status
 #### Flags
@@ -37,11 +49,28 @@ todocli list
 ```sh
 todocli status flag 0
 ```
+<details>
+<summary>Show The Examples</summary>
+--c
+<p align="center">
+  <img src="https://github.com/fsb3rke/todocli/blob/master/images/statusCompleted.png?raw=true" width="580" title="addTask example">
+</p>
+--u
+<p align="center">
+  <img src="https://github.com/fsb3rke/todocli/blob/master/images/statusUnCompleted.png?raw=true" width="580" title="addTask example">
+</p>
+</details>
 
 ### Remove Spesific Task
 ```sh
 todocli remove 0
 ```
+<details>
+<summary>Show The Example</summary>
+<p align="center">
+  <img src="https://github.com/fsb3rke/todocli/blob/master/images/removeTask.png?raw=true" width="580" title="addTask example">
+</p>
+</details>
 
 
 
