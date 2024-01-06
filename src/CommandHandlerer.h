@@ -55,6 +55,14 @@ private:
         {PARAM_COMPLETE, status::COMPLETED},
         {PARAM_UNCOMPLETE, status::UNCOMPLETED}
     };
+    std::unordered_map<std::string, std::string> helpMap {
+        {"init", "creates a todocli init file."},
+        {"list", "lists all tasks."},
+        {"get INDEX", "get spesific task with index."},
+        {"add TASK", "add task."},
+        {"remove INDEX", "remove spesific task with index."},
+        {"status STATUS INDEX", "change spesific task status with status parameter and index."}
+    };
     tabulate::Table cliView;
 public:
     CommandHandlerer(std::vector<std::string> argv) {

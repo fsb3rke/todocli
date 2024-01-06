@@ -190,12 +190,10 @@ void CommandHandlerer::execute(std::string comm) {
         //     << std::endl;
 
         this->cliView.add_row({"COMMAND", "DESCRIPTION"});
-        this->cliView.add_row({"init", "creates a todocli init file."});
-        this->cliView.add_row({"list", "lists all tasks."});
-        this->cliView.add_row({"get INDEX", "get spesific task with index."});
-        this->cliView.add_row({"add TASK", "add task."});
-        this->cliView.add_row({"remove INDEX", "remove spesific task with index."});
-        this->cliView.add_row({"status STATUS INDEX", "change spesific task status with status parameter and index."});
+
+        for (auto& it: this->helpMap) {
+            this->cliView.add_row({it.first, it.second});
+        }
 
         this->cliView.column(0).format().font_color(tabulate::Color::green);
 
