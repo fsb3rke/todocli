@@ -83,25 +83,21 @@ Cli to clone the project.
 ```sh
 gh repo clone fsb3rke/todocli
 ```
-
-#### WINDOWS
-POWERSHELL
-```
-./build.bat
-```
-CMD
-```
-build.bat
-```
-
-#### LINUX
-First, bash file needs to ``chmod 777`` to be an executable file.
+Create the build folder.
 ```sh
-chmod 777 ./build.sh
+mkdir build
 ```
-You can execute the bash file.
+Enter the build folder.
 ```sh
-./build.sh
+cd ./build
+```
+Initialize cmake.
+```sh
+cmake .. -G"Unix Makefiles"
+```
+Get the build.
+```sh
+make
 ```
 
 ## RoadMap
@@ -110,4 +106,4 @@ You can execute the bash file.
 ## License
 Copyright (c) 2023 Berke Avcı (fsb3rke) \
 \
-This software is released under the [MIT](https://github.com/fsb3rke/todocli/blob/master/LICENSE) License.
+This software is released under the [MIT](https://choosealicense.com/licenses/mit/) License.
