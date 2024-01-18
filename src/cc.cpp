@@ -1,23 +1,23 @@
 #include "cc.h"
 
+std::vector<std::string> cc::chrToVec(char const *chrArr[], int argc) {
+  std::vector<std::string> stackVec;
 
-std::vector<std::string> cc::chrToVec(char const *chrArr[], const int& argc) {
-	std::vector<std::string> stackVec;
+  for (int i = 0; i < argc; ++i) {
+    stackVec.push_back(chrArr[i]);
+  }
 
-	for (int i = 0; i < argc; ++i) {
-		stackVec.push_back(chrArr[i]);
-	}
-
-	return stackVec;
+  return stackVec;
 }
 
-std::string cc::collectVecInStr(const std::vector<std::string>& vec, const size_t& startIdx) {
-	std::string stackStr;
+std::string cc::collectVecInStr(const std::vector<std::string> &vec,
+                                const size_t &startIdx) {
+  std::string stackStr;
 
-	for (size_t i = startIdx; i < vec.size(); ++i) {
-		stackStr += vec.at(i) + " ";
-	}
+  for (size_t i = startIdx; i < vec.size(); ++i) {
+    stackStr += vec.at(i) + " ";
+  }
 
-	stackStr.pop_back();
-	return stackStr;
+  stackStr.pop_back();
+  return stackStr;
 }
