@@ -83,7 +83,11 @@ Cli to clone the project.
 ```sh
 gh repo clone fsb3rke/todocli
 ```
-Get Build Folder For CMake
+Move in todocli folder
+```sh
+cd ./todocli
+```
+Create Build Folder For CMake
 ```sh
 cmake -DCMAKE_BUILD_TYPE=Release -S . -B build -G"Unix Makefiles"
 ```
