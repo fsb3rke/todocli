@@ -1,14 +1,14 @@
 #ifndef COMMAND_HANDLERER_H
 #define COMMAND_HANDLERER_H
 
-#include "reqs.h"
+#include "reqs.hpp"
+#include "fs.hpp"
 #include <functional>
 #include <unordered_map>
-#include <ctime>
 #include <tabulate.hpp>
 
 
-enum command {
+enum class command {
     INIT,
     ADD,
     LIST,
@@ -19,9 +19,9 @@ enum command {
     NONE
 };
 
-#define PARAM_COMPLETE "--c"
-#define PARAM_UNCOMPLETE "--u"
-enum status {
+constexpr const char* PARAM_COMPLETE = "--c";
+constexpr const char* PARAM_UNCOMPLETE = "--u";
+enum class status {
     COMPLETED,
     UNCOMPLETED
 };

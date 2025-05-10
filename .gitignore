@@ -1,3 +1,4 @@
 /build/
 nntodo.json
 todocli.json
+*.exe

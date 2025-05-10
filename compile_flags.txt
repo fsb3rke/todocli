@@ -1,0 +1,5 @@
+-Ilib
+-std=c++17
+-Wall
+-Werror
+-Wpedantic

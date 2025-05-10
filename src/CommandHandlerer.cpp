@@ -1,4 +1,8 @@
-#include "CommandHandlerer.h"
+#include "CommandHandlerer.hpp"
+#include <ctime>
+#include "cc.hpp"
+#include "error.hpp"
+#include <fstream>
 
 
 void CommandHandlerer::commandInitialize() {
@@ -7,7 +11,8 @@ void CommandHandlerer::commandInitialize() {
 
 void CommandHandlerer::addTask(const std::string& task) {
     time_t now = time(0);
-    char* dt = ctime(&now);
+    char dt[26];
+    ctime_s(dt, sizeof(dt), &now);
 
     this->data["app"]["tasks"].push_back({
             {"task", task},
@@ -26,7 +31,7 @@ void CommandHandlerer::addTask(const std::string& task) {
 
     for (size_t i = 0; i < 3; ++i) {
         this->cliView[0][i].format().font_color(tabulate::Color::magenta).font_align(tabulate::FontAlign::center);
-    } 
+    }
     std::cout << this->cliView << std::endl;
 
     // std::cout << "\"" << task << "\"" << " is " << "\x1B[32m" << "added" << "\033[0m" << "." << std::endl;
@@ -71,7 +76,7 @@ void CommandHandlerer::getTask(const int& id) {
 
     for (size_t i = 0; i < 3; ++i) {
         this->cliView[0][i].format().font_color(tabulate::Color::magenta).font_align(tabulate::FontAlign::center);
-    } 
+    }
     std::cout << this->cliView << std::endl;
 
     // std::cout << id << " " << (_data["completed"] ? "\x1B[31m" : "\x1B[32m") << " " << _data["task"] << " \x1B[33m" << _data["date"] << "\033[0m" << std::endl;
@@ -90,8 +95,8 @@ void CommandHandlerer::removeTask(const int& id) {
 
     for (size_t i = 0; i < 3; ++i) {
         this->cliView[0][i].format().font_color(tabulate::Color::magenta).font_align(tabulate::FontAlign::center);
-    } 
-    
+    }
+
     try
     {
         this->data["app"]["tasks"].erase(id);
@@ -131,7 +136,7 @@ void CommandHandlerer::setTaskStatus(const int& id, const status& stat) {
     this->cliView[1][3].format().font_color(tabulate::Color::yellow);
     for (size_t i = 0; i < 4; ++i) {
         this->cliView[0][i].format().font_color(tabulate::Color::magenta).font_align(tabulate::FontAlign::center);
-    } 
+    }
     std::cout << this->cliView << std::endl;
 
     // std::cout << id << " set" << (stat == status::COMPLETED ? "\x1B[31m completed" : "\x1B[32m uncompleted") << "\033[0m" << std::endl;
@@ -141,37 +146,38 @@ void CommandHandlerer::setTaskStatus(const int& id, const status& stat) {
 void CommandHandlerer::execute(const std::string& comm) {
     switch (this->commandMap[comm])
     {
-    case INIT:
+    case command::INIT:
         this->commandInitialize();
         break;
 
     // usage: todocli add TASK
-    case ADD:
+    case command::ADD:
+        std::cout << cc::collectVecInStr(this->argv, 2) << std::endl;
         this->addTask(cc::collectVecInStr(this->argv, 2));
         break;
 
     // usage: todocli list
-    case LIST:
+    case command::LIST:
         this->listTasks();
         break;
 
     // usage: todocli get INDEX
-    case GET:
+    case command::GET:
         this->getTask(std::stoi(this->argv.at(2)));
         break;
 
     // usage: todocli remove INDEX
-    case REMOVE:
+    case command::REMOVE:
         this->removeTask(std::stoi(this->argv.at(2)));
         break;
-    
+
     // usage: todocli status --c / --u INDEX
-    case STATUS:
+    case command::STATUS:
         // std::cout << this->argv.at(2) << " " << this->argv.at(3) << std::endl;
         this->setTaskStatus(std::stoi(this->argv.at(3)), this->statusMap[this->argv.at(2)]);
         break;
 
-    case HELP:
+    case command::HELP:
         // HELP
         // std::cout
         //     << "\tCOMMAND\t\t\t-\tDESCRIPTION"

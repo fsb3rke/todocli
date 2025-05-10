@@ -1,4 +1,6 @@
-#include "CommandHandlerer.h"
+#include "CommandHandlerer.hpp"
+#include "error.hpp"
+#include "cc.hpp"
 
 
 int main(int argc, char const *argv[])

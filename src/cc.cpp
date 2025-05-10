@@ -1,4 +1,4 @@
-#include "cc.h"
+#include "cc.hpp"
 
 std::vector<std::string> cc::chrToVec(char const *chrArr[], int argc) {
   std::vector<std::string> stackVec;

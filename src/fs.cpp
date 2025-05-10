@@ -1,4 +1,5 @@
-#include "fs.h"
+#include "fs.hpp"
+#include <fstream>
 
 void fs::createInitFile() {
     std::ofstream f(INIT_FILE);
